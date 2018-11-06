@@ -1,4 +1,9 @@
 language: python
 python:
 - "3.5"
-script: python3 -m unittest 
+before_install:
+- pip install pytest pytest-cov
+- pip install coveralls
+script: python3 -m unittest
+after_success:
+- coveralls 
