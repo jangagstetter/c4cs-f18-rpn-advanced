@@ -4,6 +4,7 @@ python:
 before_install:
 - pip install pytest pytest-cov
 - pip install coveralls
+- pip install termcolor
 script: coverage run -m unittest
 after_success:
 - coveralls 
