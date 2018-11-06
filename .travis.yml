@@ -1,7 +1,4 @@
 language: python
 python:
-	- "3.5"
-install:
-	- pip install .
-script:
-	- python3 -m unittest 
+- "3.5"
+script: python3 -m unittest 
