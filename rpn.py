@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import operator
+import readline
+from termcolor import cprint 
 
 op = {
 	'+': operator.add,
@@ -33,10 +35,36 @@ def calculate(arg):
 	return stack.pop()
 
 
-def main():
+def main(): 
+	operators = {
+		'+': 'yellow',
+		'-': 'magenta',
+		'*': 'cyan',
+		'/': 'red',
+		'^': 'green',
+	}
+	# some code that will never run
+	if(0 == 1):
+		print("Hello!")
+		print("Here's some untested code!")
+		y = 2
+		x = 3
 	while True:
-		result = calculate(input('rpn calc> '))
-		print(result)
+		user_input = input('rpn calc> ')			
+		result = calculate(user_input)
+		for item in user_input.split():
+			try:
+				num = int(item)
+				color = 'grey'
+			except ValueError:
+				color = operators[item]
+			cprint(item, color, end =" ")
+		print('\n')
+		cprint("Result:", 'blue', attrs=['bold'], end =" ")
+		if(result < 0):
+			cprint(result, 'red')
+		else:
+			cprint(result, 'green')
 
 if __name__ == '__main__':
 	main()
